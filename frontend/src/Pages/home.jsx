@@ -1,10 +1,9 @@
-// src/components/Homepage.jsx
 import React from "react";
-import "./homepage.css"; // We'll extract the CSS into a separate file
+import "../Static/homepage.css";
 
 function Homepage() {
   return (
-    <div className="container">
+    <div className="homepage-container">
       <h1>Welcome to the Home Page.</h1>
       <a href="/item">Go to Items</a>
       <a href="/admin">Go to Admin Panel</a>

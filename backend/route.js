@@ -1,33 +1,14 @@
 // backend/routes.js
 const express = require('express');
-const path = require('path');
 const Item = require('./models/item');
 const SalesHistory = require('./models/salesHistory');
 
 const router = express.Router();
 
-// Serve HTML pages (for now — later replaced by React frontend)
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'home.html'));
-});
+// ----------------------
+// ✅ API: Items
+// ----------------------
 
-router.get('/item', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'item.html'));
-});
-
-router.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'admin.html'));
-});
-
-router.get('/sales-history', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'salesHistory.html'));
-});
-
-router.get('/prediction', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'prediction.html'));
-});
-
-// API: Items
 router.get('/items', async (req, res) => {
   try {
     const items = await Item.findAll();
@@ -79,7 +60,10 @@ router.delete('/items/:id', async (req, res) => {
   }
 });
 
-// API: Sales History
+// ---------------------------
+// ✅ API: Sales History
+// ---------------------------
+
 router.get('/api/sales-history', async (req, res) => {
   try {
     const sales = await SalesHistory.findAll({
